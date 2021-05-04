@@ -4,9 +4,9 @@
   "description": "A serverless file-sharing web app.",
   "main": "index.js",
   "scripts": {
-    "compile": "concurrently \"npx tsc --project ./public/ \" \"copyfiles -e \"./**/*.ts\" --error -u 1 ./public/**/* ./dist/public/\" \"copyfiles --error -u 3 ./node_modules/ipfs-core/dist/index.min.js ./public/dist/js/ipfs\"",
+    "compile": "concurrently \"npx tsc --project ./public/ \" \"copyfiles -e \"./**/*.ts\" --error -u 1 ./public/**/* ./dist/public/\" \"copyfiles --error -u 3 ./node_modules/ipfs-core/dist/index.min.js ./dist/public/js/ipfs\"",
     "watch": "nodemon --watch public --ext * -x \"npm run compile\"",
-    "dev":  "npx tsc --project ./server/",
+    "dev":  "npx tsc --project ./server/ && concurrently \"npm run watch\" \"node ./dist/server/index.js\"",
     "clean": "rimraf dist"
   },
   "repository": {
