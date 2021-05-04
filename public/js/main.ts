@@ -1,4 +1,4 @@
-import IPFS from 'ipfs/index.min.js'
+import IPFS from 'ipfs/index.min.js';
 
 
 const node = await IPFS.create({silent: true});

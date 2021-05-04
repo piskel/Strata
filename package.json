@@ -4,8 +4,9 @@
   "description": "A serverless file-sharing web app.",
   "main": "index.js",
   "scripts": {
-    "compile": "concurrently \"npx tsc --project ./\" \"copyfiles -e \"./**/*.ts\" --error -u 1 ./public/**/* ./dist/\" \"copyfiles --error -u 3 ./node_modules/ipfs-core/dist/index.min.js ./dist/js/ipfs\"",
+    "compile": "concurrently \"npx tsc --project ./public/ \" \"copyfiles -e \"./**/*.ts\" --error -u 1 ./public/**/* ./dist/public/\" \"copyfiles --error -u 3 ./node_modules/ipfs-core/dist/index.min.js ./public/dist/js/ipfs\"",
     "watch": "nodemon --watch public --ext * -x \"npm run compile\"",
+    "dev":  "npx tsc --project ./server/",
     "clean": "rimraf dist"
   },
   "repository": {
@@ -19,13 +20,13 @@
   },
   "homepage": "https://github.com/piskel/strata#readme",
   "dependencies": {
-    "ipfs-core": "^0.5.4",
-    "nodemon": "^2.0.7"
+    "ipfs-core": "^0.5.4"
   },
   "devDependencies": {
     "concurrently": "^6.0.2",
     "copyfiles": "^2.4.1",
     "rimraf": "^3.0.2",
-    "typescript": "^4.2.4"
+    "typescript": "^4.2.4",
+    "nodemon": "^2.0.7"
   }
 }
