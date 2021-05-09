@@ -5,6 +5,7 @@ import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
 import { Box, Container, Flex, Heading, Link, Stack, Text } from "@chakra-ui/layout";
 import React from "react";
+import FileUpload from "../components/FileUpload";
 
 
 export default function Index() {
@@ -27,7 +28,7 @@ export default function Index() {
                 bg={useColorModeValue('white', 'gray.700')}
                 boxShadow={'lg'}
                 p={8}>
-
+                    <FileUpload/>
                 </Box>
             </Stack>
         </Flex>
