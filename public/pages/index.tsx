@@ -17,7 +17,7 @@ export default function Index() {
         justify={'center'}>
             <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
                 <Stack align={'center'}>
-                    <Heading fontSize={'4xl'}>STRATA</Heading>
+                    <Heading fontSize={'4xl'} fontWeight={"black"}>STRATA</Heading>
                     <Text fontSize={'lg'} color={'gray.600'}>
                     Serverless file-sharing 📦
                     </Text>
