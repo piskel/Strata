@@ -21,12 +21,12 @@ export default class FileUpload extends React.Component
     super(props);
 
     this.initEvents = this.initEvents.bind(this)
-    this.dragEnter = this.dragEnter.bind(this)
-    this.dragLeave = this.dragLeave.bind(this)
-    this.drop = this.drop.bind(this)
-    this.upload = this.upload.bind(this)
-    this.click = this.click.bind(this)
-    this.addFile = this.addFile.bind(this)
+    this.dragEnter  = this.dragEnter.bind(this)
+    this.dragLeave  = this.dragLeave.bind(this)
+    this.drop       = this.drop.bind(this)
+    this.upload     = this.upload.bind(this)
+    this.click      = this.click.bind(this)
+    this.addFile    = this.addFile.bind(this)
   }
 
   async componentDidMount()
