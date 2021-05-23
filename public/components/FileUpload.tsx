@@ -1,6 +1,6 @@
 
 import { Button } from '@chakra-ui/button';
-import { Badge, Box, Code, VStack } from '@chakra-ui/layout';
+import { Badge, Box, Code, Link, VStack } from '@chakra-ui/layout';
 import React, { BaseSyntheticEvent } from 'react';
 
 import { AiOutlineUpload } from 'react-icons/ai'
@@ -13,7 +13,8 @@ export default class FileUpload extends React.Component
     loading: false,
     dragndropElement: undefined,
     strata: new Strata(),
-    cid: ""
+    cid: "",
+    isUploadable: false
   };
 
   constructor(props: React.ComponentProps<any>)
@@ -39,6 +40,9 @@ export default class FileUpload extends React.Component
     let fileList = test.target.files as FileList
     let file = fileList[0]
     this.state.strata.addFile(file)
+    this.state.isUploadable = true
+    console.log(this.state.isUploadable)
+    
   }
 
   initEvents(e: BaseSyntheticEvent)
@@ -66,6 +70,8 @@ export default class FileUpload extends React.Component
     let fileList = e.dataTransfer.files as FileList
     let file = fileList[0]
     this.state.strata.addFile(file)
+    this.state.isUploadable = true
+    console.log("ok")
   }
   async click()
   {
@@ -75,7 +81,6 @@ export default class FileUpload extends React.Component
   async upload()
   {
     let cid = await this.state.strata.uploadFile()
-    await navigator.clipboard.writeText(`https://ipfs.io/ipfs/${cid}`)
     this.setState({cid: `https://ipfs.io/ipfs/${cid}`});
   }
 
@@ -108,7 +113,8 @@ export default class FileUpload extends React.Component
             <AiOutlineUpload color="white" size="30px" />
           </Box>
         </label>
-        <Button onClick={this.upload}>Upload</Button>
+        <Button isActive={this.state.isUploadable} onClick={this.upload} >Upload</Button>
+        <Button hidden={this.state.cid == ""} onClick={async ()=>{await navigator.clipboard.writeText(this.state.cid)}}>Copy link</Button>
       </VStack>
       </>
     );
